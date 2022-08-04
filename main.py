@@ -1,7 +1,20 @@
 import asyncio
-from .lsp_specification import ClientCapabilities, SymbolTag
+from typing import TypedDict
+from typing_extensions import NotRequired
+
+from event_loop import wait
+from lsp.specification import ClientCapabilities, SymbolTag
+
 import sublime_plugin
-from .event_loop import wait
+
+
+class Person(TypedDict):
+    name: str
+    age: NotRequired[int]
+
+p: Person = {
+    'name': 'dsad'
+}
 
 async def main():
     print('Hello ...')

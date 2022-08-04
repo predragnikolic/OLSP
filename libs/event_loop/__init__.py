@@ -12,8 +12,9 @@ def wait(func):
             future = asyncio.ensure_future(func(*args), loop=__loop)
             __loop.call_soon_threadsafe(asyncio.ensure_future, future)
 
-    wrap.__name__ = func.__name__ #type: ignore
-    return wrap #type: ignore
+    wrap.__name__ = func.__name__  # type: ignore
+    return wrap  # type: ignore
+
 
 def setup_event_loop():
     print('loop: starting')
@@ -23,14 +24,18 @@ def setup_event_loop():
         print('loop: already created')
         return
     __loop = asyncio.new_event_loop()
-    __thread = Thread(target=__loop.run_forever, name="Pedja event loop")
+    __thread = Thread(target=__loop.run_forever)
     __thread.start()
     print("loop: started")
+
 
 def shutdown_event_loop():
     print("loop: stopping")
     global __loop
     global __thread
+
+    if not __loop:
+        print('no loop to shutdown.')
 
     def __shutdown():
         for task in asyncio.all_tasks():
@@ -46,7 +51,3 @@ def shutdown_event_loop():
     __thread = None
     print("loop: stopped")
 
-setup_event_loop()
-
-def plugin_unloaded() -> None:
-    shutdown_event_loop()

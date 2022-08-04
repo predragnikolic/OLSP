@@ -1,7 +1,6 @@
-
 from enum import Enum
 from typing import Any, Dict, Literal, Optional, Union, List
-from .typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict, NotRequired
 
 
 ProgressToken = Union[int, str]
