@@ -178,19 +178,24 @@ def generate():
 		with open('./generated_types.py', "w") as new_file:
 			new_file.write(content)
 
+def capitalize(text: str) -> str:
+	return  text[0].upper() + text[1:]
+
 def format_comment(text: Optional[str], prefix="") -> str:
 	return prefix + f'"""\n{text}\n"""' if text else ""
-
 
 def format_enumeration_values(values: List[EnumerationEntry]) -> str:
 	result = []
 	for v in values:
-		key = v['name'].capitalize()
+		key = capitalize(v['name'])
 		if key == 'None':
 			print('Conflict with None keyword, fallback to Null')
 			key = 'Null' # 'None' is a reserved keyword, use Null :)
 		value = v['value']
-		value = int(value) if str(value).isdigit() else f"'{value}'"
+		try:
+			value = int(value)
+		except ValueError:
+			value = f"'{value}'"
 		documentation = format_comment(v.get('documentation'), '\n\t')
 
 		result.append(f"""{key}={value}{documentation}""")

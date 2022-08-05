@@ -20,11 +20,11 @@ a specific type like class or enum.
 	Enum='enum'
 	Interface='interface'
 	Struct='struct'
-	Typeparameter='typeParameter'
+	TypeParameter='typeParameter'
 	Parameter='parameter'
 	Variable='variable'
 	Property='property'
-	Enummember='enumMember'
+	EnumMember='enumMember'
 	Event='event'
 	Function='function'
 	Method='method'
@@ -58,18 +58,18 @@ corresponding client capabilities.
 	Async='async'
 	Modification='modification'
 	Documentation='documentation'
-	Defaultlibrary='defaultLibrary'
+	DefaultLibrary='defaultLibrary'
 
 class ErrorCodes(Enum):
 	"""
 Predefined error codes.
 """
-	Parseerror='-32700'
-	Invalidrequest='-32600'
-	Methodnotfound='-32601'
-	Invalidparams='-32602'
-	Internalerror='-32603'
-	Jsonrpcreservederrorrangestart='-32099'
+	ParseError=-32700
+	InvalidRequest=-32600
+	MethodNotFound=-32601
+	InvalidParams=-32602
+	InternalError=-32603
+	JsonrpcReservedErrorRangeStart=-32099
 	"""
 This is the start range of JSON RPC reserved error codes.
 It doesn't denote a real error code. No application error codes should
@@ -79,38 +79,38 @@ are left in the range.
 
 @since 3.16.0
 """
-	Servererrorstart='-32099'
+	ServerErrorStart=-32099
 	"""
 @deprecated use  jsonrpcReservedErrorRangeStart
 """
-	Servernotinitialized='-32002'
+	ServerNotInitialized=-32002
 	"""
 Error code indicating that a server received a notification or
 request before the server has received the `initialize` request.
 """
-	Unknownerrorcode='-32001'
-	Jsonrpcreservederrorrangeend='-32000'
+	UnknownErrorCode=-32001
+	JsonrpcReservedErrorRangeEnd=-32000
 	"""
 This is the end range of JSON RPC reserved error codes.
 It doesn't denote a real error code.
 
 @since 3.16.0
 """
-	Servererrorend='-32000'
+	ServerErrorEnd=-32000
 	"""
 @deprecated use  jsonrpcReservedErrorRangeEnd
 """
 
 class LSPErrorCodes(Enum):
 	
-	Lspreservederrorrangestart='-32899'
+	LspReservedErrorRangeStart=-32899
 	"""
 This is the start range of LSP reserved error codes.
 It doesn't denote a real error code.
 
 @since 3.16.0
 """
-	Requestfailed='-32803'
+	RequestFailed=-32803
 	"""
 A request failed but it was syntactically correct, e.g the
 method name was known and the parameters were valid. The error
@@ -119,7 +119,7 @@ the request failed.
 
 @since 3.17.0
 """
-	Servercancelled='-32802'
+	ServerCancelled=-32802
 	"""
 The server cancelled the request. This error code should
 only be used for requests that explicitly support being
@@ -127,7 +127,7 @@ server cancellable.
 
 @since 3.17.0
 """
-	Contentmodified='-32801'
+	ContentModified=-32801
 	"""
 The server detected that the content of a document got
 modified outside normal conditions. A server should
@@ -138,12 +138,12 @@ on an older state might still be useful for the client.
 If a client decides that a result is not of any use anymore
 the client should cancel the request.
 """
-	Requestcancelled='-32800'
+	RequestCancelled=-32800
 	"""
 The client has canceled a request and a server as detected
 the cancel.
 """
-	Lspreservederrorrangeend='-32800'
+	LspReservedErrorRangeEnd=-32800
 	"""
 This is the end range of LSP reserved error codes.
 It doesn't denote a real error code.
@@ -193,11 +193,11 @@ A symbol kind.
 	Object=19
 	Key=20
 	Null=21
-	Enummember=22
+	EnumMember=22
 	Struct=23
 	Event=24
 	Operator=25
-	Typeparameter=26
+	TypeParameter=26
 
 class SymbolTag(Enum):
 	"""
@@ -323,11 +323,11 @@ Represents reasons why a text document is saved.
 Manually triggered, e.g. by the user pressing save, by starting debugging,
 or by an API call.
 """
-	Afterdelay=2
+	AfterDelay=2
 	"""
 Automatic after a delay.
 """
-	Focusout=3
+	FocusOut=3
 	"""
 When the editor lost focus.
 """
@@ -355,12 +355,12 @@ The kind of a completion entry.
 	File=17
 	Reference=18
 	Folder=19
-	Enummember=20
+	EnumMember=20
 	Constant=21
 	Struct=22
 	Event=23
 	Operator=24
-	Typeparameter=25
+	TypeParameter=25
 
 class CompletionItemTag(Enum):
 	"""
@@ -379,7 +379,7 @@ class InsertTextFormat(Enum):
 Defines whether the insert text in a completion item should be interpreted as
 plain text or a snippet.
 """
-	Plaintext=1
+	PlainText=1
 	"""
 The primary text to be inserted is treated as a plain string.
 """
@@ -402,7 +402,7 @@ item insertion.
 
 @since 3.16.0
 """
-	Asis=1
+	AsIs=1
 	"""
 The insertion or replace strings is taken as it is. If the
 value is multi line the lines below the cursor will be
@@ -410,7 +410,7 @@ inserted using the indentation defined in the string value.
 The client will not apply any kind of adjustments to the
 string.
 """
-	Adjustindentation=2
+	AdjustIndentation=2
 	"""
 The editor adjusts leading whitespace of new lines so that
 they match the indentation up to the cursor of the line for
@@ -446,7 +446,7 @@ A set of predefined code action kinds
 	"""
 Empty kind.
 """
-	Quickfix='quickfix'
+	QuickFix='quickfix'
 	"""
 Base kind for quickfix actions: 'quickfix'
 """
@@ -454,7 +454,7 @@ Base kind for quickfix actions: 'quickfix'
 	"""
 Base kind for refactoring actions: 'refactor'
 """
-	Refactorextract='refactor.extract'
+	RefactorExtract='refactor.extract'
 	"""
 Base kind for refactoring extraction actions: 'refactor.extract'
 
@@ -466,7 +466,7 @@ Example extract actions:
 - Extract interface from class
 - ...
 """
-	Refactorinline='refactor.inline'
+	RefactorInline='refactor.inline'
 	"""
 Base kind for refactoring inline actions: 'refactor.inline'
 
@@ -477,7 +477,7 @@ Example inline actions:
 - Inline constant
 - ...
 """
-	Refactorrewrite='refactor.rewrite'
+	RefactorRewrite='refactor.rewrite'
 	"""
 Base kind for refactoring rewrite actions: 'refactor.rewrite'
 
@@ -496,11 +496,11 @@ Base kind for source actions: `source`
 
 Source code actions apply to the entire file.
 """
-	Sourceorganizeimports='source.organizeImports'
+	SourceOrganizeImports='source.organizeImports'
 	"""
 Base kind for an organize imports source action: `source.organizeImports`
 """
-	Sourcefixall='source.fixAll'
+	SourceFixAll='source.fixAll'
 	"""
 Base kind for auto-fix source actions: `source.fixAll`.
 
@@ -533,7 +533,7 @@ result literals like `Hover`, `ParameterInfo` or `CompletionItem`.
 Please note that `MarkupKinds` must not start with a `$`. This kinds
 are reserved for internal usage.
 """
-	Plaintext='plaintext'
+	PlainText='plaintext'
 	"""
 Plain text is supported as a content format
 """
@@ -548,18 +548,18 @@ A set of predefined position encoding kinds.
 
 @since 3.17.0
 """
-	Utf8='utf-8'
+	UTF8='utf-8'
 	"""
 Character offsets count UTF-8 code units.
 """
-	Utf16='utf-16'
+	UTF16='utf-16'
 	"""
 Character offsets count UTF-16 code units.
 
 This is the default and must always be supported
 by servers
 """
-	Utf32='utf-32'
+	UTF32='utf-32'
 	"""
 Character offsets count UTF-32 code units.
 
@@ -650,12 +650,12 @@ How a completion was triggered
 Completion was triggered by typing an identifier (24x7 code
 complete), manual invocation (e.g Ctrl+Space) or via API.
 """
-	Triggercharacter=2
+	TriggerCharacter=2
 	"""
 Completion was triggered by a trigger character specified by
 the `triggerCharacters` properties of the `CompletionRegistrationOptions`.
 """
-	Triggerforincompletecompletions=3
+	TriggerForIncompleteCompletions=3
 	"""
 Completion was re-triggered as current completion list is incomplete
 """
@@ -670,11 +670,11 @@ How a signature help was triggered.
 	"""
 Signature help was invoked manually by the user or by a command.
 """
-	Triggercharacter=2
+	TriggerCharacter=2
 	"""
 Signature help was triggered by a trigger character.
 """
-	Contentchange=3
+	ContentChange=3
 	"""
 Signature help was triggered by the cursor moving or by the document content changing.
 """
@@ -755,7 +755,7 @@ fails. All operations executed before the failing operation stay executed.
 All operations are executed transactional. That means they either all
 succeed or no changes at all are applied to the workspace.
 """
-	Textonlytransactional='textOnlyTransactional'
+	TextOnlyTransactional='textOnlyTransactional'
 	"""
 If the workspace edit contains only textual file changes they are executed transactional.
 If resource changes (create, rename or delete file) are part of the change the failure
